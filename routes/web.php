@@ -84,9 +84,15 @@ Route::get('/invoice/delete/{id}', 'InvoiceController@delete')->name('invoice.de
 Route::get('/invoice/print/list', 'InvoiceController@printInvoiceList')->name('invoice.print.list');
 Route::get('/invoice/print/{id}', 'InvoiceController@printInvoice')->name('invoice.print');
 
+//Daily Invoice Report
+
+Route::get('daily/report', 'InvoiceController@dailyReport')->name('invoice.daily.report');
+Route::get('daily/report/pdf', 'InvoiceController@dailyReportPdf')->name('invoice.daily.report.pdf');
+
 
 // Purchase Route Are Here
 
 Route::get('/get-category', 'DefaultController@getCategory')->name('get-category');
 Route::get('/get-product', 'DefaultController@getProduct')->name('get-product');
 Route::get('/get-stock', 'DefaultController@getStock')->name('check-product-stock');
+

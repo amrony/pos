@@ -1,4 +1,10 @@
 @extends('master')
+{{-- @section('invoice')
+  is-expanded
+@endsection
+@section('invoice_pending_list')
+  active
+@endsection --}}
 @section('body')
 
     <div class="app-title">

@@ -167,15 +167,24 @@ class InvoiceController extends Controller
     public function printInvoice($id){
         $data['invoice'] = Invoice::with('invoice_details')->find($id);
         $pdf = PDF::loadView('pdf.invoice-pdf', $data);
-        // $pdf->setProtection(['copy','print'], '', 'pass');
         return $pdf->stream('document.pdf');
-        // return $pdf->download('invoice.pdf');
+    }
+
+    public function dailyReport(){
+        return view('invoice.daily-invoice-report');
+    }
+
+    public function dailyReportPdf(Request $request){
+        $sdate = date('Y-m-d', strtotime($request->start_date));
+        $edate = date('Y-m-d', strtotime($request->end_date));
+        // dd($sdate);
+        $data['allData'] = Invoice::whereBetween('date', [$sdate, $edate])->where('status','1')->get();
+        $data['start_date'] = date('Y-m-d', strtotime($request->start_date));
+        $data['end_date'] = date('Y-m-d', strtotime($request->end_date));
 
 
-
-        // $pdf = PDF::loadView('pdf.invoice', $data);
-
-
+        $pdf = PDF::loadView('pdf.daily-invoice-report-pdf', $data);
+        return $pdf->stream('document.pdf');
     }
 
     

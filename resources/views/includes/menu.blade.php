@@ -90,19 +90,39 @@
                     fa-angle-right"></i></a>
         <ul class="treeview-menu">
             <li>
-                <a class="treeview-item @yield('manage_invoice')" href="{{ route('invoice.index') }}">
+                <a class="treeview-item @yield('invoice_index')" href="{{ route('invoice.index') }}">
                     <i class="icon fa fa-circle-o"></i>View Invoice
                 </a>
             </li>
             <li>
-                <a class="treeview-item @yield('manage_invoice')" href="{{ route('invoice.pending.list') }}">
+                <a class="treeview-item @yield('invoice_pending_list')" href="{{ route('invoice.pending.list') }}">
                     <i class="icon fa fa-circle-o"></i>Approval Invoice
                 </a>
             </li>
 
             <li>
-                <a class="treeview-item @yield('invoice.print.list')" href="{{ route('invoice.print.list') }}">
+                <a class="treeview-item @yield('invoice_print_list')" href="{{ route('invoice.print.list') }}">
                     <i class="icon fa fa-circle-o"></i>Print Invoice
+                </a>
+            </li>
+
+            <li>
+                <a class="treeview-item @yield('invoice_daily_report')" href="{{ route('invoice.daily.report') }}">
+                    <i class="icon fa fa-circle-o"></i>Daily Invoice Report(pdf)
+                </a>
+            </li>
+        </ul>
+    </li>
+
+
+    <li class="treeview @yield('invoice')">
+        <a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-edit"></i><span
+                    class="app-menu__label">Manage Stock</span><i class="treeview-indicator fa
+                    fa-angle-right"></i></a>
+        <ul class="treeview-menu">
+            <li>
+                <a class="treeview-item @yield('invoice_index')" href="{{ route('invoice.index') }}">
+                    <i class="icon fa fa-circle-o"></i>Stock Report
                 </a>
             </li>
         </ul>
